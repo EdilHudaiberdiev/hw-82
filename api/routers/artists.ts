@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import {imagesUpload} from "../multer";
-import mongoose from "mongoose";
+import mongoose, {mongo} from "mongoose";
 import Artist from "../models/Artist";
 
 const artistsRouter = Router();
@@ -20,6 +20,10 @@ artistsRouter.post('/', imagesUpload.single('image'), async (req, res, next) => 
     } catch (e) {
         if (e instanceof mongoose.Error.ValidationError) {
             return res.status(422).send(e);
+        }
+
+        if (e instanceof mongo.MongoServerError && e.code === 11000) {
+            return res.status(422).send({message: 'Title is not unique'});
         }
 
         next(e);
