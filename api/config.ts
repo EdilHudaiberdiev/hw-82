@@ -6,7 +6,7 @@ const config = {
     rooPath,
     publicPath: path.join(rooPath, 'public'),
     mongoose: {
-        db: 'mongodb://localhost/8001'
+        db: 'mongodb://localhost/spotifyCustom'
     }
 };
 
