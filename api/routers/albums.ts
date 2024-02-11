@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import {imagesUpload} from "../multer";
 import mongoose, {Types} from "mongoose";
+import {imagesUpload} from "../multer";
 import Album from "../models/Album";
 
 const albumsRouter = Router();
@@ -31,7 +31,14 @@ albumsRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
 
 albumsRouter.get('/', async (req, res, next) => {
     try {
-        const artist = await Album.find().populate('artist', 'title');
+        let artist;
+
+        if (req.query.artist) {
+            artist =  await Album.find({artist: req.query.artist}).populate('artist');
+        } else {
+            artist = await Album.find().populate('artist', 'title');
+        }
+
         return res.send(artist);
     } catch (e) {
         next(e);

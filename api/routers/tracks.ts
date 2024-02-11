@@ -31,13 +31,18 @@ tracksRouter.post('/', async (req, res, next) => {
 
 tracksRouter.get('/', async (req, res, next) => {
     try {
-        const track = await Track.find();
-        return res.send(track);
+        let album;
+
+        if (req.query.album) {
+            album =  await Track.find({album: req.query.album}).populate('album');
+        } else {
+            album = await Track.find();
+        }
+
+        return res.send(album);
     } catch (e) {
         next(e);
     }
 });
-
-
 
 export default tracksRouter
