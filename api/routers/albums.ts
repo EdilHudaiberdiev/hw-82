@@ -28,7 +28,6 @@ albumsRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
     }
 });
 
-
 albumsRouter.get('/', async (req, res, next) => {
     try {
         let artist;
