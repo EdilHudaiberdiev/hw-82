@@ -28,8 +28,9 @@ const TrackHistorySchema = new mongoose.Schema({
             message: 'Track does not found',
         }
     },
-    date: {
-        type: String,
+    datetime: {
+        type: Date,
+        default: () => new Date(),
     },
 });
 
