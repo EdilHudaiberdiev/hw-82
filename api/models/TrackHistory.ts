@@ -34,15 +34,7 @@ const TrackHistorySchema = new mongoose.Schema({
         default: () => new Date(),
     },
 
-    token: {
-        type: String,
-        required: true,
-    }
 });
-
-TrackHistorySchema.methods.generateToken = function () {
-    this.token = randomUUID();
-}
 
 const TrackHistory = mongoose.model('TrackHistory', TrackHistorySchema);
 

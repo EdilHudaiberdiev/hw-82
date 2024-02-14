@@ -1,7 +1,6 @@
 import {Router} from 'express';
 import mongoose from "mongoose";
 import TrackHistory from "../models/TrackHistory";
-import Album from "../models/Album";
 import User from "../models/User";
 import Track from "../models/Track";
 
@@ -17,7 +16,6 @@ trackHistoryRouter.post('/', async (req, res, next) => {
         };
 
         const trackHistory = new TrackHistory(trackHistoryData);
-        trackHistory.generateToken();
         await trackHistory.save();
 
         res.send(trackHistory);
@@ -31,19 +29,36 @@ trackHistoryRouter.post('/', async (req, res, next) => {
 });
 
 trackHistoryRouter.get('/', async (req, res, next) => {
+    const token = req.get('Authorizationion');
+
     try {
-        const trackHistory = await TrackHistory.find();
+        if (!token) {
+            return res.status(401).send({error: "No token present"});
+        }
 
-        let user_id = req.body.user
-        let track_id = req.body.track
+    const user = await User.findOne({token});
 
-        if (req.body.user) {
-            req.body.user =  await User.findOne({user_id});
-        } if (req.body.track) {
-            req.body.track=  await Track.findOne({track_id});
+        if(!user) {
+            return res.status(401).send({error: 'Wrong token'})
+        }
+
+        let track;
+        if (req.query.trackId) {
+            track = await Track.findOne({ _id: req.query.trackId });
+            if (!track) {
+                return res.status(404).send({ error: 'Track not found' });
+            }
+        }
+
+        let trackHistory;
+        if (track) {
+            trackHistory = await TrackHistory.find({ user: user._id, track: track._id });
+        } else {
+            trackHistory = await TrackHistory.find({ user: user._id });
         }
 
         return res.send(trackHistory);
+
     } catch (e) {
         next(e);
     }
