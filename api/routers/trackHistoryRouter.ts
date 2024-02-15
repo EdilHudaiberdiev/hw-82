@@ -9,10 +9,23 @@ const trackHistoryRouter = Router();
 trackHistoryRouter.post('/', async (req, res, next) => {
 
     try {
+        const token = req.get('Authorization');
+
+        if (!token) {
+            return res.status(401).send({error: "No token present"});
+        }
+
+        const user = await User.findOne({token});
+
+        if(!user) {
+            return res.status(401).send({error: 'Wrong token'})
+        }
+
+
         const trackHistoryData = {
-            user: req.body.user,
+            user: user._id,
             track: req.body.track,
-            datetime: req.body.datetime,
+            datetime: new Date().toISOString(),
         };
 
         const trackHistory = new TrackHistory(trackHistoryData);
@@ -29,20 +42,21 @@ trackHistoryRouter.post('/', async (req, res, next) => {
 });
 
 trackHistoryRouter.get('/', async (req, res, next) => {
-    const token = req.get('Authorizationion');
+    const token = req.get('Authorization');
 
     try {
         if (!token) {
             return res.status(401).send({error: "No token present"});
         }
 
-    const user = await User.findOne({token});
+        const user = await User.findOne({token});
 
         if(!user) {
             return res.status(401).send({error: 'Wrong token'})
         }
 
         let track;
+
         if (req.query.trackId) {
             track = await Track.findOne({ _id: req.query.trackId });
             if (!track) {

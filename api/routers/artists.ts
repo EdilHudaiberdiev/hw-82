@@ -13,10 +13,10 @@ artistsRouter.post('/', imagesUpload.single('image'), async (req, res, next) => 
             description: req.body.description,
         };
 
-       const artist = new Artist(artistData);
-       await artist.save();
+        const artist = new Artist(artistData);
+        await artist.save();
 
-       res.send(artist);
+        res.send(artist);
     } catch (e) {
         if (e instanceof mongoose.Error.ValidationError) {
             return res.status(422).send(e);
