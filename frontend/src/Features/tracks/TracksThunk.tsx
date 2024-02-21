@@ -4,7 +4,7 @@ import axiosApi from '../../axiosApi';
 
 export const getTracksByAlbumId = createAsyncThunk(
   'tracks/get-by-album-id',
-  async (albumId) => {
+  async (albumId: string) => {
     const response = await axiosApi.get(`tracks?album=${albumId}` );
     return response.data ?? [];
   });

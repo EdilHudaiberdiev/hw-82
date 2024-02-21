@@ -19,7 +19,7 @@ interface Props {
 const AlbumCard: React.FC<Props> = ({album}) => {
   return (
     <div className="col">
-      <NavLink to={`tracks?album=${album._id}&artist=${album.artist._id}`} className="d-block border mb-2 rounded-4 text-black text-decoration-none">
+      <NavLink to={`/tracks?album=${album._id}&artist=${album.artist._id}`} className="d-block border mb-2 rounded-4 text-black text-decoration-none">
         <div className="d-flex align-items-center">
           <ImageCardMedia
             image={album.image ? apiUrl + album.image : NoAlbumImage} title={album._id}/>

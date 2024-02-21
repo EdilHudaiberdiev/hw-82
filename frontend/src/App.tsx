@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 import Home from './Containers/Home/Home';
 import Toolbar from './Components/UI/Toolbar/Toolbar';
 import Albums from './Containers/Albums/Albums';
+import Tracks from './Containers/Tracks/Tracks';
 
 const App = () => {
 
@@ -15,7 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/albums" element={<Albums/>}/>
-          <Route path="/tracks" element={<Albums/>}/>
+          <Route path="/tracks" element={<Tracks/>}/>
           <Route path="*" element={(<h1>Not found</h1>)}/>
         </Routes>
       </main>
