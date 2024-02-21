@@ -1,8 +1,10 @@
+import Artists from '../../Features/artists/Artists';
+
 const Home = () => {
 
   return (
     <div className="container">
-        Future music app
+        <Artists/>
     </div>
   );
 };

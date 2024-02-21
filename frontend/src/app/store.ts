@@ -1,7 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
+import {ArtistsReducer} from '../Features/artists/ArtistsSlice';
 
 export const store = configureStore({
   reducer: {
+    artists: ArtistsReducer
   },
 });
 
