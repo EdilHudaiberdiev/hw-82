@@ -1,4 +1,4 @@
-import mongoose, {Schema, model, Types} from 'mongoose';
+import mongoose, {Schema, Types} from 'mongoose';
 import Album from "./Album";
 
 const TrackSchema = new mongoose.Schema({
@@ -22,6 +22,10 @@ const TrackSchema = new mongoose.Schema({
     duration: {
         type: String,
     },
+    number: {
+        type: Number,
+        required: true,
+    }
 });
 
 const Track = mongoose.model('Track', TrackSchema);
