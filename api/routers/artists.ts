@@ -39,4 +39,17 @@ artistsRouter.get('/', async (req, res, next) => {
     }
 });
 
+artistsRouter.get('/:id', async (req, res, next) => {
+    try {
+        if (!req.params.id) {
+            res.status(400).send({"error": "Id params must be in url"});
+        }
+
+        const artist = await Artist.findById(req.params.id);
+        return res.send(artist);
+    } catch (e) {
+        next(e);
+    }
+});
+
 export default artistsRouter

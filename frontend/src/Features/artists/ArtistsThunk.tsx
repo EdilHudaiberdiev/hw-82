@@ -9,3 +9,12 @@ export const getArtists = createAsyncThunk(
     return response.data ?? [];
   });
 
+export const getArtistById = createAsyncThunk(
+  'artists/get-by-id',
+  async (id: string) => {
+    const response = await axiosApi.get(`artists/${id}` );
+    return response.data ?? null;
+  });
+
+
+
