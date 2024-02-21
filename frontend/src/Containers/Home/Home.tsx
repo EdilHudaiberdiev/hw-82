@@ -1,4 +1,4 @@
-import Artists from '../../Features/artists/Artists';
+import Artists from '../Artists/Artists';
 
 const Home = () => {
 

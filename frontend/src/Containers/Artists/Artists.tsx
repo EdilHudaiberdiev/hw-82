@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../app/store';
-import {getArtists} from './ArtistsThunk';
+import {getArtists} from '../../Features/artists/ArtistsThunk';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import ArtistCard from '../../Components/ArtistCard/ArtistCard';
 

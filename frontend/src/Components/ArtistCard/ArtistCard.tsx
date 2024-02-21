@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {apiUrl} from '../../constants';
-import NoArtistImage from '../../../public/artist-none-image.png';
+import NoArtistImage from '../../assets/artist-none-image.png';
 import {CardMedia, styled} from '@mui/material';
 import {IArtist} from '../../types';
 
