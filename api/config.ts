@@ -1,10 +1,10 @@
 import path from 'path';
 
-const rooPath = __dirname;
+const rootPath = __dirname;
 
 const config = {
-    rooPath,
-    publicPath: path.join(rooPath, 'public'),
+    rootPath,
+    publicPath: path.join(rootPath, 'public'),
     mongoose: {
         db: 'mongodb://localhost/spotifyCustom'
     }
