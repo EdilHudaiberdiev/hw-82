@@ -12,3 +12,12 @@ export interface IAlbum {
   release: string;
   image: string;
 }
+
+
+export interface ITrack {
+  _id: string;
+  album: string;
+  title: string;
+  duration: string;
+  number: number;
+}

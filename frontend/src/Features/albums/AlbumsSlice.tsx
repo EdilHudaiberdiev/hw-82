@@ -20,7 +20,7 @@ const initialState: albumsState = {
 
 
 const AlbumsSlice = createSlice({
-  name: 'artists',
+  name: 'albums',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

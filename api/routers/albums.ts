@@ -30,15 +30,15 @@ albumsRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
 
 albumsRouter.get('/', async (req, res, next) => {
     try {
-        let artist;
+        let album;
 
         if (req.query.artist) {
-            artist =  await Album.find({artist: req.query.artist}).populate('artist').sort({release: -1});
+            album =  await Album.find({artist: req.query.artist}).populate('artist').sort({release: -1});
         } else {
-            artist = await Album.find().populate('artist', 'title').sort({release: -1});
+            album = await Album.find().populate('artist', 'title').sort({release: -1});
         }
 
-        return res.send(artist);
+        return res.send(album);
     } catch (e) {
         next(e);
     }
