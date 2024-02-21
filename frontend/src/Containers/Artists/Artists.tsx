@@ -18,7 +18,7 @@ const Artists = () => {
 
 
   return (
-    <div>
+    <div className="container">
       {loading ? <Spinner/> :
         <>
           {artists.length === 0 ? <p>No artists yet</p> :
