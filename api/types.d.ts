@@ -9,4 +9,10 @@ interface UserMethods {
     generateToken(): void;
 }
 
+export interface IUser {
+    _id: string;
+    username: string;
+    token: string;
+}
+
 type UserModel = Model<UserFields, {}, UserMethods>;
