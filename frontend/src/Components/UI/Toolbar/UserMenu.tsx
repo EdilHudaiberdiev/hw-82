@@ -36,7 +36,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
           onClose={handleClose}
         >
           <MenuItem><NavLink className="text-decoration-none text-black" to='/track-history'>Track history</NavLink></MenuItem>
-          <MenuItem>Logout</MenuItem>
+          <MenuItem>Log out</MenuItem>
         </Menu>
 
       </Box>

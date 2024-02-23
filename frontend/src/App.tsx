@@ -5,6 +5,7 @@ import Toolbar from './Components/UI/Toolbar/Toolbar';
 import Albums from './Containers/Albums/Albums';
 import TrackHistory from './Containers/TrackHistory/TrackHistory';
 import Tracks from './Containers/Tracks/Tracks';
+import Login from './Features/users/Login/Login';
 import Register from './Features/users/Register/Register';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/login" element={<Login/>}/>
           <Route path="/albums" element={<Albums/>}/>
           <Route path="/tracks" element={<Tracks/>}/>
           <Route path="/track-history" element={<TrackHistory/>}/>
