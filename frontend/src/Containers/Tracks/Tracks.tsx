@@ -45,7 +45,7 @@ const Tracks = () => {
   return (
     <div className="container">
       {tracksLoading && artistLoading && albumsLoading ? <Spinner/> :
-        <div>
+        <div className="cursor-card">
           <h1 className="mb-2">Artist: {artistOfAlbum ? artistOfAlbum.title : "Not found"}</h1>
           <h3 className="opacity-75 mb-3">Album: {infoOfAlbum ? infoOfAlbum.title : "Not found"}</h3>
           <hr/>

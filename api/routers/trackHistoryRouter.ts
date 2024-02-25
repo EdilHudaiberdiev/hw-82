@@ -79,7 +79,7 @@ trackHistoryRouter.get('/', async (req, res, next) => {
                             model: 'Artist',
                         }
                     }
-                })
+                }).sort({ number: 1 });
         }
 
         return res.send(trackHistory);

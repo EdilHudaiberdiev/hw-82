@@ -16,7 +16,7 @@ export interface IAlbum {
 
 export interface ITrack {
   _id: string;
-  album: string;
+  album: IAlbum;
   title: string;
   duration: string;
   number: number;
@@ -60,7 +60,7 @@ export interface GlobalError {
 }
 
 export interface ITrackHistory{
-  id: string;
+  _id: string;
   user: User;
   datetime: string;
   track: ITrack;
