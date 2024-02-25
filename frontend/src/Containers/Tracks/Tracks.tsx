@@ -35,8 +35,6 @@ const Tracks = () => {
   const clickHandler = async (id: string) => {
     try {
       await dispatch(postTrackToHistoryById(id))
-      console.log(id)
-
     } catch (error) {
       console.log(error);
     }

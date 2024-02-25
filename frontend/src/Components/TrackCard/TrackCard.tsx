@@ -21,7 +21,6 @@ const TrackCard: React.FC<Props> = ({track}) => {
     if (user) {
       try {
         await dispatch(postTrackToHistoryById(id))
-        console.log(id)
       } catch (error) {
         console.log(error);
       }
