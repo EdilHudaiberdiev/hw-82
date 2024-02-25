@@ -68,7 +68,18 @@ trackHistoryRouter.get('/', async (req, res, next) => {
         if (track) {
             trackHistory = await TrackHistory.find({ user: user._id, track: track._id });
         } else {
-            trackHistory = await TrackHistory.find({ user: user._id });
+            trackHistory = await TrackHistory.find({ user: user._id })
+                .populate( {
+                    path: 'track',
+                    populate: {
+                        path: 'album',
+                        model: 'Album',
+                        populate: {
+                            path: 'artist',
+                            model: 'Artist',
+                        }
+                    }
+                })
         }
 
         return res.send(trackHistory);

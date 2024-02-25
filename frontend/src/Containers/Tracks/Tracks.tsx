@@ -6,6 +6,7 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 import TrackCard from '../../Components/TrackCard/TrackCard';
 import {getAlbumsById} from '../../Features/albums/AlbumsThunk';
 import {getArtistById} from '../../Features/artists/ArtistsThunk';
+import {postTrackToHistoryById} from '../../Features/trackHistory/TrackHistoryThunk';
 
 const Tracks = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -31,6 +32,16 @@ const Tracks = () => {
 
   }, [dispatch, albumId, artistId]);
 
+  const clickHandler = async (id: string) => {
+    try {
+      await dispatch(postTrackToHistoryById(id))
+      console.log(id)
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
       {tracksLoading && artistLoading && albumsLoading ? <Spinner/> :
@@ -41,7 +52,7 @@ const Tracks = () => {
           {tracks.length === 0 ? <p>No tracks yet</p> :
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-around">
               {tracks.map(track => (
-                <TrackCard key={track._id} track={track}/>
+                  <TrackCard key={track._id +1} track={track} onClick={clickHandler}/>
               ))}
             </div>
           }

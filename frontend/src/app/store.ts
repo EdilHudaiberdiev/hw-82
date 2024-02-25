@@ -3,6 +3,7 @@ import {ArtistsReducer} from '../Features/artists/ArtistsSlice';
 import {AlbumsReducer} from '../Features/albums/AlbumsSlice';
 import {TracksReducer} from '../Features/tracks/TracksSlice';
 import {usersReducer} from '../Features/users/UsersSlice';
+import {TracksHistoryReducer} from '../Features/trackHistory/TrackHistorySlice';
 import storage from 'redux-persist/lib/storage';
 import { FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
   artists: ArtistsReducer,
   albums: AlbumsReducer,
   tracks: TracksReducer,
+  tracksHistory: TracksHistoryReducer,
   users: persistReducer(usersPersistConfig, usersReducer),
 });
 

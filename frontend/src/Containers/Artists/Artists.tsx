@@ -15,8 +15,6 @@ const Artists = () => {
     dispatch(getArtists());
   }, [dispatch]);
 
-
-
   return (
     <div className="container">
       {loading ? <Spinner/> :
